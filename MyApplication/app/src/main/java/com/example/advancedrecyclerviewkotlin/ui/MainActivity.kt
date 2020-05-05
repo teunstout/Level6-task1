@@ -24,12 +24,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         initViews()
-        initViewModel()
     }
 
     private fun initViews() {
         rvColors.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         rvColors.adapter = colorAdapter
+        initViewModel()
     }
 
     private fun onColorClick(colorItem: ColorItem) {
@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initViewModel() {
-        viewModel = ViewModelProvider (this).get(MainActivityViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
 
         viewModel.colorItems.observe(this, Observer {
             colors.clear()
